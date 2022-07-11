@@ -21,9 +21,12 @@ public class HomeActivity extends AppCompatActivity implements ProductAdapter.Se
 
     Database database;
     TextView tvUsername;
-    List<Product> productList;
-    RecyclerView recyclerView;
-    ProductAdapter productAdapter;
+    List<Product> productComputer;
+    List<Product> productKeyboard;
+    RecyclerView rvComputer;
+    RecyclerView rvKeyboard;
+    ProductAdapter productAdapterComputer;
+    ProductAdapter productAdapterKeyboard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,19 +39,27 @@ public class HomeActivity extends AppCompatActivity implements ProductAdapter.Se
         String username = settings.getString("username", "username");
         tvUsername = (TextView) findViewById(R.id.tvUsername);
         tvUsername.setText(username);
-        productList = getProductComputer();
-        recyclerView = (RecyclerView) findViewById(R.id.rvComputer);
+        productComputer = getProductComputer();
+        productKeyboard = getProductKeyboard();
+        rvComputer = (RecyclerView) findViewById(R.id.rvComputer);
+        rvKeyboard = (RecyclerView) findViewById(R.id.rvKeyboard);
+
+        LinearLayoutManager linearLayoutManagerComputer = new LinearLayoutManager(this);
+        linearLayoutManagerComputer.setOrientation(LinearLayoutManager.HORIZONTAL);
+
+        LinearLayoutManager linearLayoutManagerKeyboard = new LinearLayoutManager(this);
+        linearLayoutManagerKeyboard.setOrientation(LinearLayoutManager.HORIZONTAL);
 
 
+        rvComputer.setLayoutManager(linearLayoutManagerComputer);
+        rvKeyboard.setLayoutManager(linearLayoutManagerKeyboard);
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        productAdapterComputer = new ProductAdapter(productComputer,  this);
 
-        recyclerView.setLayoutManager(linearLayoutManager);
+        productAdapterKeyboard = new ProductAdapter(productKeyboard,  this);
 
-        productAdapter = new ProductAdapter(productList,  this);
-
-        recyclerView.setAdapter(productAdapter);
+        rvComputer.setAdapter(productAdapterComputer);
+        rvKeyboard.setAdapter(productAdapterKeyboard);
 
 
     }
@@ -64,9 +75,21 @@ public class HomeActivity extends AppCompatActivity implements ProductAdapter.Se
         return products;
     }
 
+    private List<Product> getProductKeyboard() {
+        List<Product> products = new ArrayList<Product>();
+        Cursor dataProduct = database.GetData("SELECT * FROM product WHERE type = 'Bàn phím'");
+        while (dataProduct.moveToNext()) {
+            Product product = new Product(dataProduct.getInt(0), dataProduct.getString(1), dataProduct.getString(2), dataProduct.getDouble(3), dataProduct.getString(4), dataProduct.getString(5));
+            Log.d("product", dataProduct.getString(2));
+            products.add(product);
+        }
+        return products;
+    }
+
     @Override
     public void selectedProduct(Product product) {
 //        startActivity(new Intent(this, HomeActivity.this, ));
+        Log.d("selectedProduct", product.getName());
     }
 
     @Override

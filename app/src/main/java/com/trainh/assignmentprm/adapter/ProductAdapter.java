@@ -1,6 +1,7 @@
 package com.trainh.assignmentprm.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.trainh.assignmentprm.R;
 import com.trainh.assignmentprm.entities.Product;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductAdapterVh> implements Filterable {
 
@@ -44,10 +48,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductA
     public void onBindViewHolder(@NonNull ProductAdapter.ProductAdapterVh holder, int position) {
 
         Product product = productList.get(position);
+        DecimalFormat formatter = new DecimalFormat("#,###,###");
 
         String username = product.getName();
-        String price = String.valueOf(product.getPrice());
-
+        String price = formatter.format(product.getPrice()) + " vnd";
         holder.tvName.setText(username);
         holder.tvPrice.setText(price);
 
