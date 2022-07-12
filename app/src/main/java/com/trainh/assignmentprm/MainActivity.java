@@ -65,16 +65,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
 //        database.createAccount(new Account("hoangtrai", "1"));
-//        database.createProduct(new Product("", "Laptop Gaming Acer Nitro 5 AN515 45 R6EV", 19490000, "Máy tính", ""));
-//        database.createProduct(new Product("", "Laptop Gaming Acer Nitro 5 Eagle AN515 57 5669", 19490000, "Máy tính", ""));
-//        database.createProduct(new Product("", "Laptop gaming Acer Nitro 5 Eagle AN515 57 54MV", 21990000, "Máy tính", ""));
-//        database.createProduct(new Product("", "Laptop Gaming Acer Nitro 5 AN515 57 71VV", 22990000, "Máy tính", ""));
-//        database.createProduct(new Product("", "Laptop Gaming Acer Nitro 5 Eagle AN515 57 720A", 23990000, "Máy tính", ""));
-//        database.createProduct(new Product("", "Bàn phím cơ AKKO 3108 Plus Prunus Lannesiana", 1589000, "Bàn phím", ""));
-//        database.createProduct(new Product("", "Bàn phím AKKO 3068 v2 RGB White", 159900, "Bàn phím", ""));
-//        database.createProduct(new Product("", "Bàn phím cơ AKKO ACR87 Blue", 1699000, "Bàn phím", ""));
-//        database.createProduct(new Product("", "Bàn phím cơ AKKO ACR87 Black", 2290000, "Bàn phím", ""));
-//        database.createProduct(new Product("", "Bàn phím AKKO ACR Pro Alice Plus", 289900, "Bàn phím", ""));
+//        database.createProduct(new Product(R.drawable.nitro5, "Laptop Gaming Acer Nitro 5 AN515 45 R6EV", 19490000, "Máy tính", ""));
+//        database.createProduct(new Product(R.drawable.nitro5, "Laptop Gaming Acer Nitro 5 Eagle AN515 57 5669", 19490000, "Máy tính", ""));
+//        database.createProduct(new Product(R.drawable.nitro5, "Laptop gaming Acer Nitro 5 Eagle AN515 57 54MV", 21990000, "Máy tính", ""));
+//        database.createProduct(new Product(R.drawable.nitro5, "Laptop Gaming Acer Nitro 5 AN515 57 71VV", 22990000, "Máy tính", ""));
+//        database.createProduct(new Product(R.drawable.nitro5, "Laptop Gaming Acer Nitro 5 Eagle AN515 57 720A", 23990000, "Máy tính", ""));
+//        database.createProduct(new Product(R.drawable.keyboard, "Bàn phím cơ AKKO 3108 Plus Prunus Lannesiana", 1589000, "Bàn phím", ""));
+//        database.createProduct(new Product(R.drawable.keyboard, "Bàn phím AKKO 3068 v2 RGB White", 159900, "Bàn phím", ""));
+//        database.createProduct(new Product(R.drawable.keyboard, "Bàn phím cơ AKKO ACR87 Blue", 1699000, "Bàn phím", ""));
+//        database.createProduct(new Product(R.drawable.keyboard, "Bàn phím cơ AKKO ACR87 Black", 2290000, "Bàn phím", ""));
+//        database.createProduct(new Product(R.drawable.keyboard, "Bàn phím AKKO ACR Pro Alice Plus", 289900, "Bàn phím", ""));
 
 
 

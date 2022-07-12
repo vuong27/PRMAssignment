@@ -68,7 +68,7 @@ public class HomeActivity extends AppCompatActivity implements ProductAdapter.Se
         List<Product> products = new ArrayList<Product>();
         Cursor dataProduct = database.GetData("SELECT * FROM product WHERE type = 'Máy tính'");
         while (dataProduct.moveToNext()) {
-            Product product = new Product(dataProduct.getInt(0), dataProduct.getString(1), dataProduct.getString(2), dataProduct.getDouble(3), dataProduct.getString(4), dataProduct.getString(5));
+            Product product = new Product(dataProduct.getInt(0), dataProduct.getInt(1), dataProduct.getString(2), dataProduct.getDouble(3), dataProduct.getString(4), dataProduct.getString(5));
             Log.d("product", dataProduct.getString(2));
             products.add(product);
         }
@@ -79,7 +79,7 @@ public class HomeActivity extends AppCompatActivity implements ProductAdapter.Se
         List<Product> products = new ArrayList<Product>();
         Cursor dataProduct = database.GetData("SELECT * FROM product WHERE type = 'Bàn phím'");
         while (dataProduct.moveToNext()) {
-            Product product = new Product(dataProduct.getInt(0), dataProduct.getString(1), dataProduct.getString(2), dataProduct.getDouble(3), dataProduct.getString(4), dataProduct.getString(5));
+            Product product = new Product(dataProduct.getInt(0), dataProduct.getInt(1), dataProduct.getString(2), dataProduct.getDouble(3), dataProduct.getString(4), dataProduct.getString(5));
             Log.d("product", dataProduct.getString(2));
             products.add(product);
         }

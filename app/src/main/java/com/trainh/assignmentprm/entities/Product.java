@@ -2,13 +2,13 @@ package com.trainh.assignmentprm.entities;
 
 public class Product {
     private int id;
-    private String image;
+    private int image;
     private String name;
     private double price;
     private String type;
     private String description;
 
-    public Product(String image, String name, double price, String type, String description) {
+    public Product(int image, String name, double price, String type, String description) {
         this.image = image;
         this.name = name;
         this.price = price;
@@ -16,7 +16,7 @@ public class Product {
         this.description = description;
     }
 
-    public Product(int id, String image, String name, double price, String type, String description) {
+    public Product(int id, int image, String name, double price, String type, String description) {
         this.id = id;
         this.image = image;
         this.name = name;
@@ -33,11 +33,11 @@ public class Product {
         this.id = id;
     }
 
-    public String getImage() {
+    public int getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(int image) {
         this.image = image;
     }
 

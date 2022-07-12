@@ -52,9 +52,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductA
 
         String username = product.getName();
         String price = formatter.format(product.getPrice()) + " vnd";
+        int image = product.getImage();
         holder.tvName.setText(username);
         holder.tvPrice.setText(price);
-
+        holder.ivProduct.setImageResource(image);
     }
 
     @Override
