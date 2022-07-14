@@ -4,12 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -20,7 +23,7 @@ import com.trainh.assignmentprm.entities.Product;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeActivity extends AppCompatActivity implements ProductAdapter.SelectedProduct{
+public class thanh_toan_page extends AppCompatActivity implements ProductAdapter.SelectedProduct {
 
     Database database;
     TextView tvUsername;
@@ -34,17 +37,14 @@ public class HomeActivity extends AppCompatActivity implements ProductAdapter.Se
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-
-        Button btnAddToCart = findViewById(R.id.button3);
-        btnAddToCart.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_thanh_toan_page);
+        Button btndathang = findViewById(R.id.btndathang);
+        btndathang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this, thanh_toan_page.class );
-                startActivity(intent);
+                dathang();
             }
         });
-
         database = new Database(getApplicationContext());
 
         SharedPreferences settings = getApplicationContext().getSharedPreferences("username", 0);
@@ -72,10 +72,27 @@ public class HomeActivity extends AppCompatActivity implements ProductAdapter.Se
 
         rvComputer.setAdapter(productAdapterComputer);
         rvKeyboard.setAdapter(productAdapterKeyboard);
-
-
     }
+    private void dathang() {
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dat_hang_dialog);
+        Window window = dialog.getWindow();
+        if (window == null) {
+            return;
+        }
 
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+
+        Button btncontinues = dialog.findViewById(R.id.tieptuc);
+        btncontinues.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+        dialog.show();
+    }
     private List<Product> getProductComputer() {
         List<Product> products = new ArrayList<Product>();
         Cursor dataProduct = database.GetData("SELECT * FROM product WHERE type = 'Máy tính'");
@@ -100,12 +117,6 @@ public class HomeActivity extends AppCompatActivity implements ProductAdapter.Se
 
     @Override
     public void selectedProduct(Product product) {
-//        startActivity(new Intent(this, HomeActivity.this, ));
-        Log.d("selectedProduct", product.getName());
-    }
-
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-        super.onPointerCaptureChanged(hasCapture);
+        Log.d("selected product", product.getName());
     }
 }
