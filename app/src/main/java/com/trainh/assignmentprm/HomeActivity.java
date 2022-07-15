@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.trainh.assignmentprm.adapter.ProductAdapter;
@@ -36,11 +38,29 @@ public class HomeActivity extends AppCompatActivity implements ProductAdapter.Se
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        Button btnAddToCart = findViewById(R.id.button3);
-        btnAddToCart.setOnClickListener(new View.OnClickListener() {
+        ImageView noteCart = findViewById(R.id.imageView4);
+        noteCart.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this, thanh_toan_page.class );
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, CartTv.class);
+                startActivity(intent);
+            }
+        });
+
+//        Button btnAddToCart = findViewById(R.id.button3);
+//        btnAddToCart.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(HomeActivity.this, CartTv.class );
+//                startActivity(intent);
+//            }
+//        });
+
+        ImageView imgMaps = findViewById(R.id.imageView2);
+        imgMaps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, MapsActivity.class);
                 startActivity(intent);
             }
         });

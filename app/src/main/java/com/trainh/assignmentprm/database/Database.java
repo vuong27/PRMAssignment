@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 import com.trainh.assignmentprm.entities.Account;
+import com.trainh.assignmentprm.entities.Cart;
 import com.trainh.assignmentprm.entities.Product;
 
 public class Database extends SQLiteOpenHelper {
@@ -19,6 +20,7 @@ public class Database extends SQLiteOpenHelper {
 
     private static final String accountTable = "account";
     private static final String productTable = "product";
+    private static final String cartTable = "cart";
 
     private static final String idColumn = "id";
 
@@ -30,6 +32,7 @@ public class Database extends SQLiteOpenHelper {
     private static final String priceColumn = "price";
     private static final String typeColumn = "type";
     private static final String descriptionColumn = "descriptionColumn";
+    private static final String totalColumn = "total";
 
 
 //    public Database(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
@@ -55,6 +58,13 @@ public class Database extends SQLiteOpenHelper {
                 priceColumn + " INTEGER ," +
                 typeColumn + " TEXT ," +
                 descriptionColumn + " TEXT " +
+                ")");
+        db.execSQL("CREATE TABLE " + cartTable + "(" +
+                idColumn + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                nameColumn + " TEXT ," +
+                imageColumn + " TEXT ," +
+                priceColumn + " INTEGER ," +
+                totalColumn + " INTEGER " +
                 ")");
     }
 
@@ -85,6 +95,20 @@ public class Database extends SQLiteOpenHelper {
             contentValues.put(typeColumn, product.getType());
             contentValues.put(descriptionColumn, product.getDescription());
             return sqlite.insert(productTable, null, contentValues) > 0;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public boolean createCart(Cart cart) {
+        try {
+            SQLiteDatabase sqlite = getWritableDatabase();
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(imageColumn, cart.getImage());
+            contentValues.put(nameColumn, cart.getName());
+            contentValues.put(priceColumn, cart.getPrice());
+            contentValues.put(totalColumn, cart.getTotal());
+            return sqlite.insert(cartTable, null, contentValues) > 0;
         } catch (Exception e) {
             return false;
         }
